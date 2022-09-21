@@ -17,6 +17,7 @@
                             <th scope="col">ID</th>
                             <th scope="col">Autore</th>
                             <th scope="col">Titolo</th>
+                            <th scope="col">Categoria</th>
                             <th scope="col">Data</th>
                             <th></th>
                         </tr>
@@ -27,6 +28,12 @@
                                 <th scope="row">{{ $post->id }}</th>
                                 <td>{{ $post->user->name }}</td>
                                 <td><a href="{{ route('admin.posts.show', $post->id) }}">{{ $post->title }}</a></td>
+                                <td>
+                                    <h5><span class="badge rounded-pill" 
+                                        style="background-color:{{ $post->category->color }}">
+                                        {{ $post->category->name }}
+                                    </span></h5>
+                                </td>
                                 <td>{{ $post->post_date }}</td>
                                 <td>
                                     <a href="{{ route('admin.posts.edit', $post->id) }}"
