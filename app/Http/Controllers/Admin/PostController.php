@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Post;
+use DateTime;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -59,6 +60,8 @@ class PostController extends Controller
         $newPost->title = $data['title'];
         $newPost->post_content = $data['post_content'];
         $newPost->post_image = $data['post_image'];
+        $newPost->user_id = Auth::id();
+        $newPost->post_date= new DateTime();
         //dd($newPost);
         $newPost-> save();
 
@@ -103,8 +106,10 @@ class PostController extends Controller
         $post = Post::findOrFail($id);
         $post = new Post();
         $post->title = $data['title'];
-        $post->post_contente = $data['post_content'];
+        $post->post_content = $data['post_content'];
         $post->post_image = $data['post_image'];
+        $post->user_id = Auth::id();
+        $post->post_date= new DateTime();
         //dd($post);
         $post->save();
          return redirect()->route('admin.posts.show', $post->id)->with('edited', $data['title']);
