@@ -4,6 +4,7 @@ use App\Models\User;
 use App\User as AppUser;
 use Illuminate\Database\Seeder;
 use Faker\Generator as Faker;
+use Illuminate\Foundation\Auth\User as AuthUser;
 use Illuminate\Support\Facades\Hash;
 
 class UsersTableSeeder extends Seeder
