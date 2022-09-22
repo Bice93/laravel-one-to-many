@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use App\Models\Post;
 use DateTime;
 use Illuminate\Http\Request;
@@ -43,7 +44,8 @@ class PostController extends Controller
     public function create()
     {
         $post = new Post();
-        return view('admin.posts.create', compact('post'));
+        $categories = Category::all();
+        return view('admin.posts.create', compact('post', 'categories'));
     }
 
     /**
@@ -89,7 +91,8 @@ class PostController extends Controller
     public function edit($id)
     {
         $post = Post::findOrFail($id);
-        return view('admin.posts.edit', compact('post'));
+        $categories = Category::all();
+        return view('admin.posts.edit', compact('post', 'categories'));
     }
 
     /**
@@ -104,7 +107,6 @@ class PostController extends Controller
         $validatedData = $request->validate($this->validationRules, $this->validationMessages);
         $data = $request->all();
         $post = Post::findOrFail($id);
-        $post = new Post();
         $post->title = $data['title'];
         $post->post_content = $data['post_content'];
         $post->post_image = $data['post_image'];

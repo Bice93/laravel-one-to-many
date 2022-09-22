@@ -21,6 +21,21 @@
                     <img src="{{ $post->post_image }}" class="card-img-top" alt="{{ $post->title }}'s image">
                     <div class="card-body">
                         <h4>{{ $post->title }}</h4>
+                        <h6>Written by: {{ $post->user->name }} | {{ $post->post_date }}</h6>
+                        <h6>Category:
+                            <span class="badge rounded-pill" 
+                                        @if (isset($post->category))
+                                            style="background-color:{{ $post->category->color }}">
+                                            {{ $post->category->name }}
+                                        @else
+                                        style="background-color: lavenderblush">
+                                        -
+                                        @endif
+                                    </span>
+                            {{-- <span class="badge rounded-pill" style="background-color:{{ $post->category->color }}">
+                                {{ $post->category->name }}
+                            </span> --}}
+                        </h6>
                         <p class="card-text">{{ $post->post_content }}</p>
                     </div>
                     <div class="col-6 offset-md-3 text-center">

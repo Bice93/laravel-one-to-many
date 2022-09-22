@@ -5,9 +5,7 @@
         <div class="alert alert-danger mt-1 w-50 style_error_message">{{ $message }}</div>
     @enderror --}}
     @include('admin.posts.includes.messageError', ['name' => 'title'])
-
 </div>
-
 
 <div class="mb-3">
     <label for="post_content" class="form-label">Content</label>

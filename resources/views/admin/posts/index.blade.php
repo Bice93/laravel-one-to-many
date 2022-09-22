@@ -29,10 +29,17 @@
                                 <td>{{ $post->user->name }}</td>
                                 <td><a href="{{ route('admin.posts.show', $post->id) }}">{{ $post->title }}</a></td>
                                 <td>
-                                    <h5><span class="badge rounded-pill" 
-                                        style="background-color:{{ $post->category->color }}">
-                                        {{ $post->category->name }}
-                                    </span></h5>
+                                    <h5>
+                                        <span class="badge rounded-pill" 
+                                        @if (isset($post->category))
+                                            style="background-color:{{ $post->category->color }}">
+                                            {{ $post->category->name }}
+                                        @else
+                                        style="background-color: lavenderblush">
+                                        -
+                                        @endif
+                                    </span>
+                                </h5>
                                 </td>
                                 <td>{{ $post->post_date }}</td>
                                 <td>
